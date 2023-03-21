@@ -221,12 +221,12 @@ const adminUpdateProduct = async (req, res, next) => {
 }
 const adminUpload = async (req, res, next) => {
     try {
-        if(!req.files || !! req.files.images === false) {
+        if (!req.files || !!req.files.images === false) {
             return res.status(400).send("No files were uploaded.")
         }
 
         const validateResult = imageValidate(req.files.images)
-        if(validateResult.error) {
+        if (validateResult.error) {
             return res.status(400).send(validateResult.error)
         }
         // uuidv4 : identificador único
@@ -236,6 +236,11 @@ const adminUpload = async (req, res, next) => {
         //__dirname =  Directorio actual
         const uploadDirectory = path.resolve(__dirname, "../../frontend", "public", "images", "products")
 
+        console.log(req.query.productId)
+
+        let product = await Product.findById(req.query.productId).orFail()
+
+
         let imagesTable = []
         if (Array.isArray(req.files.images)) {
             imagesTable = req.files.images
@@ -243,30 +248,59 @@ const adminUpload = async (req, res, next) => {
             imagesTable.push(req.files.images)
         }
 
-        for(let image of imagesTable) {
-            var uploadPath = uploadDirectory + "/" + uuidv4() + path.extname(image.name)
+        for (let image of imagesTable) {
+            //path.extname = method returns the extension of a file path
+            var fileName = uuidv4() + path.extname(image.name)
+
+            var uploadPath = uploadDirectory + "/" + fileName
+            product.images.push({ path: "/images/products/" + fileName })
+
             //image.mv por package express-fileupload
-            
-            image.mv(uploadPath, err =>{
-                if (err){
+
+            image.mv(uploadPath, err => {
+                if (err) {
                     return res.status(500).send(err);
                 }
             })
         }
+        await product.save()
         return res.send("Files uploaded!")
 
-    } catch(err) {
+    } catch (err) {
         next(err)
     }
 }
 
-
-module.exports = { 
-    getProducts, 
-    getProductById, 
-    getBestsellers, 
-    adminGetProducts, 
-    adminDeleteProduct, 
-    adminCreateProduct, 
+const adminDeleteProductImage = async (req, res, next) => {
+    try {
+      const imagePath = decodeURIComponent(req.params.imagePath);
+      const path = require("path");
+      const finalPath = path.resolve("../frontend/public") + imagePath;
+        //fs = fileSystem
+      const fs = require("fs");
+      fs.unlink(finalPath, (err) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+      });
+      await Product.findOneAndUpdate(
+        { _id: req.params.productId },
+        //$pull: elimina valores de un array 
+        { $pull: { images: { path: imagePath } } }
+      ).orFail();
+      return res.end();
+    } catch (err) {
+      next(err);
+    }
+  };
+module.exports = {
+    getProducts,
+    getProductById,
+    getBestsellers,
+    adminGetProducts,
+    adminDeleteProduct,
+    adminCreateProduct,
     adminUpdateProduct,
-    adminUpload };
+    adminUpload,
+    adminDeleteProductImage
+};
