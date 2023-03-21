@@ -215,11 +215,6 @@ const adminUpdateProduct = async (req, res, next) => {
             message: "product updated"
         })
 
-        res.json({
-            message: "product created",
-            productId: product._id
-        })
-
     } catch (err) {
         next(err)
     }
@@ -234,9 +229,12 @@ const adminUpload = async (req, res, next) => {
         if(validateResult.error) {
             return res.status(400).send(validateResult.error)
         }
-
+        // uuidv4 : identificador único
         const path = require("path")
         const { v4: uuidv4 } = require("uuid")
+
+        //__dirname =  Directorio actual
+        const uploadDirectory = path.resolve(__dirname, "../../frontend", "public", "images", "products")
 
         let imagesTable = []
         if (Array.isArray(req.files.images)) {
@@ -246,9 +244,16 @@ const adminUpload = async (req, res, next) => {
         }
 
         for(let image of imagesTable) {
-            console.log(path.extname(image.name))
-            console.log(uuidv4())
+            var uploadPath = uploadDirectory + "/" + uuidv4() + path.extname(image.name)
+            //image.mv por package express-fileupload
+            
+            image.mv(uploadPath, err =>{
+                if (err){
+                    return res.status(500).send(err);
+                }
+            })
         }
+        return res.send("Files uploaded!")
 
     } catch(err) {
         next(err)
