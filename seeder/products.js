@@ -1,11 +1,11 @@
 const products = [
   {
-  name: "Product1 Lenovo Comp1 Name Lorem ipsum dolor sit amet",
+  name: "Product1 Aviator Name Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
   price: 100,
-  category: "Computers/Laptops/Lenovo",
+  category: "Man",
   images: [
     { path: "/images/games-category.png" },
     { path: "/images/monitors-category.png" },
@@ -17,12 +17,12 @@ const products = [
   attrs: [{ key: "color", value: "blue" }],
 },
 {
-  name: "Product2 Lenovo Comp2 Name Lorem ipsum dolor sit amet",
+  name: "Product2 Kitty Name Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
   price: 100,
-  category: "Computers/Laptops/Lenovo",
+  category: "Woman",
   images: [
     { path: "/images/games-category.png" },
     { path: "/images/monitors-category.png" },
@@ -32,12 +32,12 @@ const products = [
   reviewsNumber: 5,
   reviews: [],
   attrs: [
-    { key: "color", value: "black" },
-    { key: "RAM", value: "1 TB" },
+    { key: "color", value: "Black" },
+    { key: "type", value: "Cat eye" },
   ],
 },
 {
-  name: "Product3 Dell Comp Name Lorem ipsum dolor sit amet",
+  name: "Product3 Heart Name Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
@@ -52,8 +52,8 @@ const products = [
   reviewsNumber: 5,
   reviews: [],
   attrs: [
-    { key: "color", value: "black" },
-    { key: "RAM", value: "1 TB" },
+    { key: "color", value: "pink" },
+    { key: "type", value: "heart" },
   ],
 },
 {
@@ -183,119 +183,7 @@ const products = [
   rating: 4,
   reviewsNumber: 7,
   reviews: [],
-},
-{
-  name: "Product12 Monitor Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 20,
-  price: 400,
-  category: "Monitors",
-  images: [
-    { path: "/images/games-category.png" },
-    { path: "/images/tablets-category.png" },
-    { path: "/images/monitors-category.png" },
-  ],
-  rating: 4,
-  reviewsNumber: 8,
-  reviews: [],
-},
-{
-  name: "Product13 Monitor Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 25,
-  price: 500,
-  category: "Monitors",
-  images: [
-    { path: "/images/monitors-category.png" },
-    { path: "/images/games-category.png" },
-    { path: "/images/tablets-category.png" },
-  ],
-  rating: 3,
-  reviewsNumber: 9,
-  reviews: [],
-},
-{
-  name: "Product14 Game Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 5,
-  price: 100,
-  category: "Games",
-  images: [
-    { path: "/images/games-category.png" },
-    { path: "/images/monitors-category.png" },
-    { path: "/images/tablets-category.png" },
-  ],
-  rating: 5,
-  reviewsNumber: 5,
-  reviews: [],
-},
-{
-  name: "Product15 Game Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 10,
-  price: 200,
-  category: "Games",
-  images: [
-    { path: "/images/monitors-category.png" },
-    { path: "/images/games-category.png" },
-    { path: "/images/tablets-category.png" },
-  ],
-  rating: 5,
-  reviewsNumber: 6,
-  reviews: [],
-},
-{
-  name: "Product16 Game Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 15,
-  price: 300,
-  category: "Games",
-  images: [
-    { path: "/images/tablets-category.png" },
-    { path: "/images/monitors-category.png" },
-    { path: "/images/games-category.png" },
-  ],
-  rating: 4,
-  reviewsNumber: 7,
-  reviews: [],
-},
-{
-  name: "Product17 Game Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 20,
-  price: 400,
-  category: "Games",
-  images: [
-    { path: "/images/games-category.png" },
-    { path: "/images/tablets-category.png" },
-    { path: "/images/monitors-category.png" },
-  ],
-  rating: 4,
-  reviewsNumber: 8,
-  reviews: [],
-},
-{
-  name: "Product18 Game Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 25,
-  price: 500,
-  category: "Games",
-  images: [
-    { path: "/images/monitors-category.png" },
-    { path: "/images/games-category.png" },
-    { path: "/images/tablets-category.png" },
-  ],
-  rating: 3,
-  reviewsNumber: 9,
-  reviews: [],
-},
+}
 ]
 
 module.exports = products
