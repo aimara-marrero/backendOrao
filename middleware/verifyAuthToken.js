@@ -7,6 +7,8 @@ const verifyIsLoggedIn = (req, res, next) => {
         }
 
         try {
+
+            //Guardamos los datos del user en decoded
             const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
             req.user = decoded
             next()
@@ -21,14 +23,14 @@ const verifyIsLoggedIn = (req, res, next) => {
 
 
 const verifyIsAdmin = (req, res, next) => {
-   
-        if (req.user && req.user.isAdmin) {
-            next()
-        } else {
-            return res.status(401).send("Unauthorized. Invalid Token")  
- 
-        }
+
+    if (req.user && req.user.isAdmin) {
+        next()
+    } else {
+        return res.status(401).send("No tienes autorización de administrador. Invalido Token")
 
     }
 
-    module.exports = { verifyIsLoggedIn, verifyIsAdmin }
+}
+
+module.exports = { verifyIsLoggedIn, verifyIsAdmin }

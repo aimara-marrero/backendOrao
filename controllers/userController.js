@@ -92,15 +92,53 @@ const loginUser = async (req, res, next) => {
         ),
         cookieParams
       ).json({
-          success: "user logged in",
-          userLoggedIn: { _id: user._id, name: user.name, lastName: user.lastName, email: user.email, isAdmin: user.isAdmin, doNotLogout }
+        success: "user logged in",
+        userLoggedIn: { _id: user._id, name: user.name, lastName: user.lastName, email: user.email, isAdmin: user.isAdmin, doNotLogout }
       });
     } else {
-       return res.status(401).send("wrong credentials") 
+      return res.status(401).send("wrong credentials")
     }
   } catch (err) {
     next(err);
   }
 };
 
-module.exports = { getUsers, registerUser, loginUser };
+const updateUserProfile = async (req, res, next) => {
+  try {
+
+    //Find user by ID
+    const user = await User.findById(req.user._id).orFail();
+
+    user.name = req.body.name || user.name; // Required
+    user.lastName = req.body.lastName || user.lastName; // Required
+    user.email = req.body.email || user.email; // Required
+    user.phoneNumber = req.body.phoneNumber;
+    user.address = req.body.address;
+    user.country = req.body.country;
+    user.zipCode = req.body.zipCode;
+    user.city = req.body.city;
+    user.state = req.body.state;
+
+    //Required password en el body
+    if (req.body.password !== user.password) {
+      user.password = hashPassword(req.body.password);
+    }
+    await user.save();
+
+    res.json({
+      success: "user updated",
+      userUpdated: {
+        _id: user._id,
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+module.exports = { getUsers, registerUser, loginUser, updateUserProfile };
