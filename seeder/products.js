@@ -1,8 +1,8 @@
 const products = [
   {
-  name: "Product1 Aviator Name Lorem ipsum dolor sit amet",
+  name: "Aviator Man Name Lorem ipsum dolor sit amet",
   description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
+    "Product Description Aviator Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
   price: 100,
   category: "Man",
@@ -14,10 +14,10 @@ const products = [
   rating: 5,
   reviewsNumber: 5,
   reviews: [],
-  attrs: [{ key: "color", value: "blue" }],
+  attrs: [{ key: "color", value: "black" }, { key: "type", value: "aviator" }],
 },
 {
-  name: "Product2 Kitty Name Lorem ipsum dolor sit amet",
+  name: "Aviator Woman Name Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
@@ -32,17 +32,17 @@ const products = [
   reviewsNumber: 5,
   reviews: [],
   attrs: [
-    { key: "color", value: "Black" },
-    { key: "type", value: "Cat eye" },
+    { key: "color", value: "black" },
+    { key: "type", value: "aviator" },
   ],
 },
 {
-  name: "Product3 Heart Name Lorem ipsum dolor sit amet",
+  name: "Cat-eye pink Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
   price: 100,
-  category: "Computers/Laptops/Dell",
+  category: "Woman",
   images: [
     { path: "/images/games-category.png" },
     { path: "/images/monitors-category.png" },
@@ -53,16 +53,16 @@ const products = [
   reviews: [],
   attrs: [
     { key: "color", value: "pink" },
-    { key: "type", value: "heart" },
+    { key: "type", value: "catEye" },
   ],
 },
 {
-  name: "Product4 Tablet Name Lorem ipsum dolor sit amet",
+  name: "Cat eye-black Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
   price: 100,
-  category: "Tablets",
+  category: "Woman",
   images: [
     { path: "/images/games-category.png" },
     { path: "/images/monitors-category.png" },
@@ -71,14 +71,18 @@ const products = [
   rating: 5,
   reviewsNumber: 5,
   reviews: [],
+  attrs: [
+    { key: "color", value: "black" },
+    { key: "type", value: "catEye" },
+  ]
 },
 {
-  name: "Product5 Tablet Name Lorem ipsum dolor sit amet",
+  name: "Heart Blue Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 10,
   price: 200,
-  category: "Tablets",
+  category: "Woman",
   images: [
     { path: "/images/monitors-category.png" },
     { path: "/images/games-category.png" },
@@ -87,14 +91,18 @@ const products = [
   rating: 5,
   reviewsNumber: 6,
   reviews: [],
+  attrs: [
+    { key: "color", value: "blue" },
+    { key: "type", value: "heart" },
+  ]
 },
 {
-  name: "Product6 Tablet Name Lorem ipsum dolor sit amet",
+  name: "Wyfarer-grey Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 15,
   price: 300,
-  category: "Tablets",
+  category: "Man",
   images: [
     { path: "/images/tablets-category.png" },
     { path: "/images/monitors-category.png" },
@@ -103,14 +111,18 @@ const products = [
   rating: 4,
   reviewsNumber: 7,
   reviews: [],
+  attrs: [
+    { key: "color", value: "grey" },
+    { key: "type", value: "wyfarer" },
+  ]
 },
 {
-  name: "Product7 Tablet Name Lorem ipsum dolor sit amet",
+  name: "Wyfarer-blue Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 20,
   price: 400,
-  category: "Tablets",
+  category: "Man",
   images: [
     { path: "/images/games-category.png" },
     { path: "/images/tablets-category.png" },
@@ -119,14 +131,18 @@ const products = [
   rating: 4,
   reviewsNumber: 8,
   reviews: [],
+  attrs: [
+    { key: "color", value: "blue" },
+    { key: "type", value: "wyfarer" },
+  ]
 },
 {
-  name: "Product8 Tablet Name Lorem ipsum dolor sit amet",
+  name: "Round-Eye grey Lorem ipsum dolor sit amet",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 25,
   price: 500,
-  category: "Tablets",
+  category: "Woman",
   images: [
     { path: "/images/monitors-category.png" },
     { path: "/images/games-category.png" },
@@ -135,54 +151,10 @@ const products = [
   rating: 3,
   reviewsNumber: 9,
   reviews: [],
-},
-{
-  name: "Product9 Monitor Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 5,
-  price: 100,
-  category: "Monitors",
-  images: [
-    { path: "/images/games-category.png" },
-    { path: "/images/monitors-category.png" },
-    { path: "/images/tablets-category.png" },
-  ],
-  rating: 5,
-  reviewsNumber: 5,
-  reviews: [],
-},
-{
-  name: "Product10 Monitor Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 10,
-  price: 200,
-  category: "Monitors",
-  images: [
-    { path: "/images/monitors-category.png" },
-    { path: "/images/games-category.png" },
-    { path: "/images/tablets-category.png" },
-  ],
-  rating: 5,
-  reviewsNumber: 6,
-  reviews: [],
-},
-{
-  name: "Product11 Monitor Name Lorem ipsum dolor sit amet",
-  description:
-    "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
-  count: 15,
-  price: 300,
-  category: "Monitors",
-  images: [
-    { path: "/images/tablets-category.png" },
-    { path: "/images/monitors-category.png" },
-    { path: "/images/games-category.png" },
-  ],
-  rating: 4,
-  reviewsNumber: 7,
-  reviews: [],
+  attrs: [
+    { key: "color", value: "grey" },
+    { key: "type", value: "roundEye" },
+  ]
 }
 ]
 
