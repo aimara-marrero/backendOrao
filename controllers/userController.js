@@ -151,8 +151,13 @@ const getUserProfile = async (req, res, next) => {
   }
 }
 
+//Un usuario puede escribir un review por producto 
 const writeReview = async (req, res, next) => {
   try {
+    //Crear transacción de review entre review y producto que haya  una coherencia en los datos 
+    const session = await Review.startSession();
+
+
     // solicitar datos de comment, rating del request.body:
     const { comment, rating } = req.body;
     // Validar que introducimos comment y rating
@@ -164,43 +169,62 @@ const writeReview = async (req, res, next) => {
     const ObjectId = require("mongodb").ObjectId;
     let reviewId = new ObjectId();
 
+    //Será llamada antes de crearse la review
+    session.startTransaction();
     await Review.create([
       {
-          _id: reviewId,
-          comment: comment,
-          rating: Number(rating),
-          user: { _id: req.user._id, name: req.user.name + " " + req.user.lastName },
+        _id: reviewId,
+        comment: comment,
+        rating: Number(rating),
+        user: { _id: req.user._id, name: req.user.name + " " + req.user.lastName },
       }
-  ])
+    ], { session: session })
 
-  //Buscar producto por id 
-  const product = await Product.findById(req.params.productId).populate("reviews");
+    //Buscar producto por id 
+    const product = await Product.findById(req.params.productId).populate("reviews").session(session);
 
-  // un usuario solo puede crear una única review por producto
-  const alreadyReviewed = product.reviews.find((r) => r.user._id.toString() === req.user._id.toString());
-  if (alreadyReviewed) {
+    // un usuario solo puede crear una única review por producto
+    const alreadyReviewed = product.reviews.find((r) => r.user._id.toString() === req.user._id.toString());
+    if (alreadyReviewed) {
+      await session.abortTransaction();
+      session.endSession();
       return res.status(400).send("Este producto ya tuvo una review");
-  }
+    }
 
-  // res.send(product)
-  let prc = [...product.reviews];
-  prc.push({ rating: rating });
-  product.reviews.push(reviewId);
-  if (product.reviews.length === 1) {
+    // res.send(product)
+    let prc = [...product.reviews];
+    prc.push({ rating: rating });
+    product.reviews.push(reviewId);
+    if (product.reviews.length === 1) {
       product.rating = Number(rating);
       product.reviewsNumber = 1;
-  } else {
+    } else {
       product.reviewsNumber = product.reviews.length;
 
       //Sacamos la media del rating de productos 
       product.rating = prc.map((item) => Number(item.rating)).reduce((sum, item) => sum + item, 0) / product.reviews.length;
-  }
-  await product.save();
+    }
+    await product.save();
 
-  res.send('La review ha sido creada')
+    await session.commitTransaction();
+    session.endSession();
+    res.send('review created')
 } catch (err) {
-  next(err)   
+    await session.abortTransaction();
+    next(err)   
 }
 }
 
-module.exports = { getUsers, registerUser, loginUser, updateUserProfile, getUserProfile, writeReview };
+//Obtener datos para añadir un user por parte Admin (Email, name, lastName)
+const getUser = async (req, res, next) => {
+  try {
+      const user = await User.findById(req.params.id).select("name lastName email isAdmin").orFail();
+      return res.send(user);
+  } catch (err) {
+     next(err); 
+  }
+}
+
+module.exports = { getUsers, registerUser, loginUser, updateUserProfile, getUserProfile, writeReview, getUser };
+
+
