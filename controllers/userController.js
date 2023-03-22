@@ -244,7 +244,7 @@ const updateUser = async (req, res, next) => {
   }
 }
 
-//Eliminar usuario
+//Eliminar usuario por Admin
 const deleteUser = async (req, res, next) => {
   try {
      const user = await User.findById(req.params.id).orFail();
