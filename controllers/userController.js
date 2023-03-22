@@ -140,5 +140,13 @@ const updateUserProfile = async (req, res, next) => {
   }
 };
 
+const getUserProfile = async (req, res, next) => {
+  try {
+      const user = await User.findById(req.params.id).orFail();
+      return res.send(user);
+  } catch(err) {
+      next(err)
+  }
+}
 
-module.exports = { getUsers, registerUser, loginUser, updateUserProfile };
+module.exports = { getUsers, registerUser, loginUser, updateUserProfile, getUserProfile };
