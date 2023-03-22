@@ -44,8 +44,8 @@ const getProducts = async (req, res, next) => {
         //Filtrar por los atributos
         let attrsQueryCondition = [];
         if (req.query.attrs) {
-            // attrs=RAM-1 TB-2 TB-4 TB,color-blue-red
-            // [ 'RAM-1TB-4TB', 'color-blue', '' ]
+            // attrs=type-catEye-roundEye,color-blue-red
+            // [ 'type-catEye-roundEye', 'color-blue', '' ]
             attrsQueryCondition = req.query.attrs.split(",").reduce((acc, item) => {
                 if (item) {
                     let a = item.split("-");
