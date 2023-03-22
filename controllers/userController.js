@@ -1,4 +1,6 @@
 const User = require("../models/UserModel");
+const Review = require('../models/ReviewModel')
+const Product = require('../models/ProductModel')
 const { hashPassword, comparePasswords } = require("../utils/hashPassword");
 const generateAuthToken = require("../utils/generateAuthToken");
 
@@ -142,11 +144,63 @@ const updateUserProfile = async (req, res, next) => {
 
 const getUserProfile = async (req, res, next) => {
   try {
-      const user = await User.findById(req.params.id).orFail();
-      return res.send(user);
-  } catch(err) {
-      next(err)
+    const user = await User.findById(req.params.id).orFail();
+    return res.send(user);
+  } catch (err) {
+    next(err)
   }
 }
 
-module.exports = { getUsers, registerUser, loginUser, updateUserProfile, getUserProfile };
+const writeReview = async (req, res, next) => {
+  try {
+    // solicitar datos de comment, rating del request.body:
+    const { comment, rating } = req.body;
+    // Validar que introducimos comment y rating
+    if (!(comment && rating)) {
+      return res.status(400).send("All inputs are required");
+    }
+
+    // crear id al review necesaria para guardar en la colección de productos 
+    const ObjectId = require("mongodb").ObjectId;
+    let reviewId = new ObjectId();
+
+    await Review.create([
+      {
+          _id: reviewId,
+          comment: comment,
+          rating: Number(rating),
+          user: { _id: req.user._id, name: req.user.name + " " + req.user.lastName },
+      }
+  ])
+
+  //Buscar producto por id 
+  const product = await Product.findById(req.params.productId).populate("reviews");
+
+  // un usuario solo puede crear una única review por producto
+  const alreadyReviewed = product.reviews.find((r) => r.user._id.toString() === req.user._id.toString());
+  if (alreadyReviewed) {
+      return res.status(400).send("Este producto ya tuvo una review");
+  }
+
+  // res.send(product)
+  let prc = [...product.reviews];
+  prc.push({ rating: rating });
+  product.reviews.push(reviewId);
+  if (product.reviews.length === 1) {
+      product.rating = Number(rating);
+      product.reviewsNumber = 1;
+  } else {
+      product.reviewsNumber = product.reviews.length;
+
+      //Sacamos la media del rating de productos 
+      product.rating = prc.map((item) => Number(item.rating)).reduce((sum, item) => sum + item, 0) / product.reviews.length;
+  }
+  await product.save();
+
+  res.send('La review ha sido creada')
+} catch (err) {
+  next(err)   
+}
+}
+
+module.exports = { getUsers, registerUser, loginUser, updateUserProfile, getUserProfile, writeReview };
