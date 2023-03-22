@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { verifyIsLoggedIn, verifyIsAdmin } = require('../middleware/verifyAuthToken')
-const {getUserOrders, getOrder, createOrder, updateOrderToPaid} = require("../controllers/orderController")
+const {getUserOrders, getOrder, createOrder, updateOrderToPaid, updateOrderToDelivered, getOrders, getOrderForAnalysis} = require("../controllers/orderController")
 
 // user routes
 router.use(verifyIsLoggedIn)
@@ -12,5 +12,8 @@ router.put("/paid/:id", updateOrderToPaid);
 
 // admin routes
 router.use(verifyIsAdmin)
+router.put("/delivered/:id", updateOrderToDelivered);
+router.get("/admin", getOrders);
+router.get("/analysis/:date", getOrderForAnalysis);
 
 module.exports = router
