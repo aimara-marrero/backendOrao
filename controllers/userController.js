@@ -225,6 +225,34 @@ const getUser = async (req, res, next) => {
   }
 }
 
-module.exports = { getUsers, registerUser, loginUser, updateUserProfile, getUserProfile, writeReview, getUser };
+//Actualizar datos usuario
+const updateUser = async (req, res, next) => {
+  try {
+     const user = await User.findById(req.params.id).orFail(); 
 
+      user.name = req.body.name || user.name;
+      user.lastName = req.body.lastName || user.lastName;
+      user.email = req.body.email || user.email;
+      user.isAdmin = req.body.isAdmin || user.isAdmin;
 
+      await user.save();
+
+      res.send("Datos del usuario actualizado");
+
+  } catch (err) {
+     next(err); 
+  }
+}
+
+//Eliminar usuario
+const deleteUser = async (req, res, next) => {
+  try {
+     const user = await User.findById(req.params.id).orFail();
+     await user.deleteOne(); 
+     res.send("EL usuario ha sido eliminado");
+  } catch (err) {
+      next(err);
+  }
+}
+
+module.exports = { getUsers, registerUser, loginUser, updateUserProfile, getUserProfile, writeReview, getUser, updateUser, deleteUser };
