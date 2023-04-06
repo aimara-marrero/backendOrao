@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs")
+const ObjectId = require("mongodb").ObjectId;
 
 const users = [
       {
@@ -9,6 +10,7 @@ const users = [
     isAdmin: true,
   },
   {
+    _id: new ObjectId("642bdc27d2ba11980d90b5e7"),
     name: 'John',
     lastName: 'Doe',
     email: 'john@doe.com',

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 //Who has made the order
-const User = require("./UserModel") 
+const User = require("./UserModel")
 
 const orderSchema = mongoose.Schema({
     user: {
@@ -10,25 +10,29 @@ const orderSchema = mongoose.Schema({
         ref: User,
     },
     orderTotal: {
-        itemsCount: {type: Number, required: true}, //N
-        cartSubtotal: {type: Number, required: true}
+        itemsCount: { type: Number, required: true }, //N
+        cartSubtotal: { type: Number, required: true }
     },
     //Listado de productos que tenemos en la cesta de la compra
-    cartItems: [ 
+    cartItems: [
         {
-            name: {type: String, required: true},
-            price: {type: Number, required: true},
-            image: {path: {type: String, required: true}},
-            quantity: {type: Number, required: true},
-            count: {type: Number, required: true}
+            name: { type: String, required: true },
+            price: { type: Number, required: true },
+            image: { path: { type: String, required: true } },
+            quantity: { type: Number, required: true },
+            count: { type: Number, required: true }
         }
     ],
+    paymentMethod: {
+        type: String,
+        required: true,
+    },
 
     //Si esta enviado o no el pedido
     transactionResult: {
-        status: {type: String}, // Enviado o no 
-        createTime: {type: String}, //Cuando se hizo el pedido
-        amount: {type: Number} // Precio total del pedido
+        status: { type: String }, // Enviado o no 
+        createTime: { type: String }, //Cuando se hizo el pedido
+        amount: { type: Number } // Precio total del pedido
     },
     isPaid: {
         type: Boolean,
