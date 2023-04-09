@@ -1,15 +1,15 @@
 const products = [
   {
-  name: "Aviator Man Name Lorem ipsum dolor sit amet",
+  name: "Aviator Man",
   description:
     "Product Description Aviator Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
   price: 100,
   category: "Man",
   images: [
-    { path: "/images/games-category.png" },
-    { path: "/images/monitors-category.png" },
-    { path: "/images/tablets-category.png" },
+    { path: "/images/man-category.jpg" },
+    { path: "/images/man-category.png" },
+    { path: "/images/man-category.png" },
   ],
   rating: 5,
   reviewsNumber: 5,
@@ -17,14 +17,14 @@ const products = [
   attrs: [{ key: "color", value: "black" }, { key: "type", value: "aviator" }],
 },
 {
-  name: "Aviator Woman Name Lorem ipsum dolor sit amet",
+  name: "Aviator Woman",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
   price: 100,
   category: "Woman",
   images: [
-    { path: "/images/games-category.png" },
+    { path: "/images/woman-category.jpg" },
     { path: "/images/monitors-category.png" },
     { path: "/images/tablets-category.png" },
   ],
@@ -37,7 +37,7 @@ const products = [
   ],
 },
 {
-  name: "Cat-eye pink Lorem ipsum dolor sit amet",
+  name: "Cat-eye pink",
   description:
     "Product Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsa ducimus architecto explicabo id accusantium nihil exercitationem autem porro esse.",
   count: 5,
