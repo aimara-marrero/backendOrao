@@ -80,7 +80,7 @@ const loginUser = async (req, res, next) => {
       };
 
       if (doNotLogout) {
-        cookieParams = { ...cookieParams, maxAge: 1000 * 60 * 60 * 24 * 7 }; // 1000=1ms
+        cookieParams = { ...cookieParams, maxAge: 1000 * 60 * 60 * 24 * 7}; // 1000=1ms
       }
 
       return res.cookie(
