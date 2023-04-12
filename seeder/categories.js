@@ -4,6 +4,7 @@ const categories = [
   description:
     "Woman - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.",
   image: "/images/tablets-category.png",
+  attrs: [{ key: "color", value: "black" }, { key: "type", value: "aviator" }]
 
 },
 {
@@ -11,6 +12,7 @@ const categories = [
   description:
     "Man - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.",
   image: "/images/tablets-category.png",
+  attrs: [{ key: "color", value: "red" }, { key: "type", value: "aviator" }]
 },
 {
   name: "Kids",
