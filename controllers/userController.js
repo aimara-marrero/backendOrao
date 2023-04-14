@@ -202,7 +202,8 @@ const writeReview = async (req, res, next) => {
       product.reviewsNumber = product.reviews.length;
 
       //Sacamos la media del rating de productos 
-      product.rating = prc.map((item) => Number(item.rating)).reduce((sum, item) => sum + item, 0) / product.reviews.length;
+      let ratingCalc = prc.map((item) => Number(item.rating)).reduce((sum, item) => sum + item, 0) / product.reviews.length;
+            product.rating = Math.round(ratingCalc)
     }
     await product.save();
 
