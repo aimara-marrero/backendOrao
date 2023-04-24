@@ -9,8 +9,8 @@
     "server-dev": "npx nodemon server.js",
     "client": "npm start --prefix ../frontend",
     "dev": "concurrently --kill-other-on-fail \"npm run server-dev\" \"npm run client\"",
-    "seed:data":"node seeder/seeder",
-    "seed:data-d":"node seeder/seeder -d"
+    "seed:data": "node seeder/seeder",
+    "seed:data-d": "node seeder/seeder -d"
   },
   "author": "Aimara Marrero",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.2",
+    "socket.io": "^4.6.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
