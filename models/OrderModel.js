@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema({
         itemsCount: { type: Number, required: true }, //N
         cartSubtotal: { type: Number, required: true }
     },
-    //Listado de productos que tenemos en la cesta de la compra
+    //Listado de productos que tenemos en la cesta de la compraa
     cartItems: [
         {
             name: { type: String, required: true },
