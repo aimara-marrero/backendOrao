@@ -273,7 +273,7 @@ const adminUpload = async (req, res, next) => {
             })
         }
         await product.save()
-        return res.send("Files uploaded!")
+        return res.send("¡Archivos subidos!")
 
     } catch (err) {
         next(err)

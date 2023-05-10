@@ -12,7 +12,7 @@ const imageValidate = (images) => {
     for(let image of imagesTable) {
         if(image.size > 1048576) return { error: "El tamaño es muy grande (como max. 1 MB)" }
 
-        const filetypes = /jpg|jpeg|png/
+        const filetypes = /jpg|jpeg|png|svg/
         const mimetype = filetypes.test(image.mimetype)
         if(!mimetype) return { error: "Incorrect mime type (should be jpg,jpeg or png" }
     }

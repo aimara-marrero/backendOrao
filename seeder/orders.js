@@ -1,6 +1,6 @@
 const ObjectId = require("mongodb").ObjectId
 
-const orders = Array.from({length: 22}).map((_, idx) => {
+const orders = Array.from({length: 5}).map((_, idx) => {
     let day = 20
     if(idx < 10) {
         var hour = "0" + idx

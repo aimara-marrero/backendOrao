@@ -1,25 +1,22 @@
 const categories = [
+
   {
-  name: "Woman",
+    name: "Hombre",
+    description:
+      "Man - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.",
+    image: "/images/9.png",
+    attrs: [{ key: "color", value: "red" }, { key: "type", value: "aviator" }]
+  },
+  {
+  name: "Mujer",
   description:
     "Woman - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.",
-  image: "/images/tablets-category.png",
+  image: "/images/1.png",
   attrs: [{ key: "color", value: "black" }, { key: "type", value: "aviator" }]
 
 },
-{
-  name: "Man",
-  description:
-    "Man - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.",
-  image: "/images/tablets-category.png",
-  attrs: [{ key: "color", value: "red" }, { key: "type", value: "aviator" }]
-},
-{
-  name: "Kids",
-  description:
-    "Kids - Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, magnam qui. Accusamus similique placeat at nisi autem eaque molestiae velit.",
-  image: "/images/tablets-category.png",
-}
+
+
 ]
 
 module.exports = categories
