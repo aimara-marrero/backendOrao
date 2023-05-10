@@ -7,10 +7,10 @@ const imageValidate = (images) => {
     }
 
     if(imagesTable.length > 3) {
-        return { error: "Send only 3 images at once" }
+        return { error: "Envía solo 3 imágenes al mismo tiempo" }
     }
     for(let image of imagesTable) {
-        if(image.size > 1048576) return { error: "Size too large (above 1 MB)" }
+        if(image.size > 1048576) return { error: "El tamaño es muy grande (como max. 1 MB)" }
 
         const filetypes = /jpg|jpeg|png/
         const mimetype = filetypes.test(image.mimetype)
